@@ -125,7 +125,7 @@ gsap.delayedCall(reduced ? 0.4 : 1.8, () => { ping(); setInterval(ping, 6000); }
 const layer = document.querySelector("[data-cat-layer]");
 const cat = createCotton2D(document.querySelector("[data-cat-svg]"));
 const bubble = document.querySelector("[data-cat-bubble]");
-const state = { x: 40, dir: 1, idle: 0, target: null, shown: false, lastScroll: 0, finale: false };
+const state = { x: 40, dir: 1, idle: 0, target: null, shown: false, lastScroll: null, v: 0, finale: false };
 const bowl = document.querySelector("[data-bowl]");
 const feedState = { count: 0, sleeping: false };
 const catW = () => layer.getBoundingClientRect().width;
@@ -163,7 +163,11 @@ addEventListener("pointermove", (e) => {
 
 gsap.ticker.add((time, deltaMs) => {
   const dt = Math.min(deltaMs / 1000, 1 / 20);
-  const v = lenis.velocity || 0;
+  const sy = window.scrollY;
+  const raw = (sy - (state.lastScroll ?? sy)) / Math.max(dt * 60, 0.5);
+  state.lastScroll = sy;
+  state.v = (state.v || 0) + (raw - (state.v || 0)) * 0.35;
+  const v = Math.abs(lenis.velocity || 0) > 0.05 ? lenis.velocity : state.v;
   const speed = state.shown && !reduced ? gsap.utils.clamp(0, 1, Math.abs(v) / 26) : 0;
   const W = catW();
   const maxX = innerWidth - W * 0.85;
@@ -214,7 +218,7 @@ gsap.ticker.add((time, deltaMs) => {
 
 window.__cat = { cat, stageCat, state };
 
-const desktop = matchMedia("(min-width: 901px)");
+const desktop = matchMedia("(min-width: 901px) and (min-height: 560px)");
 
 gsap.utils.toArray(".reveal").forEach((el) => {
   if (reduced) return;
@@ -319,12 +323,14 @@ function setupFeatures() {
     showFeat(0);
   } else {
     let i = 0;
+    clearInterval(window.__featTimer);
     showFeat(0);
     featLocal(0, 1);
-    setInterval(() => { i = (i + 1) % 3; showFeat(i); featLocal(i, 1); }, 3200);
+    window.__featTimer = setInterval(() => { i = (i + 1) % 3; showFeat(i); featLocal(i, 1); }, 3200);
   }
 }
 setupFeatures();
+desktop.addEventListener("change", () => { featIdx = -1; setupFeatures(); ScrollTrigger.refresh(); });
 
 const deckCards = [...document.querySelectorAll(".deck-card")];
 let deckOrder = deckCards.map((_, i) => i);

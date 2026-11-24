@@ -1,0 +1,283 @@
+---
+import Base from "../layouts/Base.astro";
+import CatMark from "../components/CatMark.astro";
+import Icon from "../components/Icon.astro";
+
+const SITE = "https://www.projectminimi.com/";
+const items = [
+  {
+    app: "whatsapp",
+    src: "minimi Design",
+    time: "14 Nov",
+    title: "Reply to Ghehna on the nudge flows",
+    body: "Ghehna proposed two nudge flows and is waiting for your pick before the website work starts.",
+  },
+  {
+    app: "calendar",
+    src: "Feedback on minimi...",
+    time: "11 Nov",
+    title: "Feedback on minimi with Akio",
+    body: "1:1 user feedback call with Akio, Thu 14 Nov, 6:00–6:30 pm IST.",
+  },
+  {
+    app: "chrome",
+    src: "minimi Product / hom...",
+    time: "9 Nov",
+    title: "Send Aryan the revised homepage copy",
+    body: "You said you would send Aryan the new homepage copy tonight so he can update the site before the weekend.",
+  },
+];
+const faqs = [
+  { q: "Is it safe to let minimi see my screen?", a: "Yes. minimi reads the text on your screen the way screen readers do, and never takes screenshots. Sensitive details are masked before anything is processed, and everything is encrypted along the way. You choose which apps minimi can’t see." },
+  { q: "What data do you keep about me?", a: "Only what minimi needs to be useful - a picture of how you work, i.e. who matters to you and what you’re working on. minimi never stores the content of your messages on cloud." },
+  { q: "How is minimi different from a to-do app or my calendar?", a: "To-do apps and calendars only know what you tell them. But most of your work happens in conversations, and so do most of your commitments. minimi keeps track of them for you in one place, and you never have to write anything down." },
+  { q: "What if minimi gets something wrong?", a: "It will sometimes, especially in the first few days. A wrong guess takes one click to dismiss, and minimi gets sharper as it learns how you work. Overtime, its incorrect learnings will be overriden by the correct ones." },
+  { q: "What happens after I download it?", a: "Grant one permission - the same as Granola or WisprFlow - and get on with your day. There are no apps to connect, so if it’s on your screen, minimi will read it. Your first commitments show up soon, and minimi continues quietly in the background." },
+];
+const bell = `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>`;
+const tick = `<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`;
+const chipIcons = {
+  tasks: `<svg viewBox="0 0 24 24" fill="none" stroke="#4a3f38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>`,
+  followups: `<svg viewBox="0 0 24 24" fill="none" stroke="#4a3f38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  meetings: `<svg viewBox="0 0 24 24" fill="none" stroke="#4a3f38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`,
+};
+---
+<Base>
+  <div class="sky" aria-hidden="true"><div class="sky-sun"></div><div class="sky-stars"></div></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="ribbon">Unofficial concept redesign by Maninder Singh. <a href={SITE} target="_blank" rel="noopener">Visit the real minimi →</a></div>
+
+  <header class="nav">
+    <a class="brand" href="#top"><CatMark /> minimi</a>
+    <a class="btn small" href={SITE} target="_blank" rel="noopener"><Icon name="apple" size={14} mono /> Download for Mac</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <h1>
+            <span class="line"><span>A mini-you</span></span>
+            <span class="line"><span>to never miss your</span></span>
+            <span class="line"><span class="serif">commitments</span></span>
+          </h1>
+          <div class="chips">
+            <span class="chip" data-chip="0"><i set:html={chipIcons.tasks}></i>tasks</span>
+            <span class="chip" data-chip="1"><i set:html={chipIcons.followups}></i>follow-ups</span>
+            <span class="chip" data-chip="2"><i set:html={chipIcons.meetings}></i>meetings</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn magnetic" href={SITE} target="_blank" rel="noopener">Join waitlist</a>
+            <span class="note">no integrations, no screenshots</span>
+          </div>
+        </div>
+
+        <div class="stage" data-stage>
+          <div class="menubar"><Icon name="apple" size={13} mono /><span>Tue 24 Nov&nbsp; 9:41</span><span class="mcat" data-mcat><CatMark size={18} /></span></div>
+          <div class="toast" data-toast>
+            <div class="ti"><CatMark size={20} /><span class="ring"></span></div>
+            <div><b data-toast-title>Send Aryan the revised homepage copy</b><span data-toast-body>You said you'd send it tonight.</span></div>
+          </div>
+          <div class="inbox" data-inbox>
+            <div class="inbox-head"><CatMark size={22} /><b>minimi</b></div>
+            <div class="inbox-meta"><span><span data-count>12</span> commitments · <span data-closed>4</span> closed</span><span>updated 6 mins ago</span></div>
+            <div class="filters"><span class="on">All</span><span><i class="dot"></i>Urgent</span><span>Tasks</span><span>Follow-ups</span><span>Meetings</span></div>
+            {items.map((it) => (
+              <div class="item" data-item>
+                <div class="src"><Icon name={it.app} size={13} /> {it.src}<time>{it.time}</time></div>
+                <h4>{it.title} <span set:html={bell}></span></h4>
+                <p>{it.body}</p>
+                <span class="tick" set:html={tick}></span>
+              </div>
+            ))}
+          </div>
+          <div class="stage-cat" data-stage-cat></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apps" id="apps">
+      <div class="wrap apps-grid">
+        <div class="apps-copy reveal">
+          <p class="eyebrow">no integrations, no screenshots</p>
+          <h2>Supports <span class="serif">all</span> apps</h2>
+          <p class="lede">minimi works right out of the box without the need for any integrations.</p>
+        </div>
+        <div class="orbit" data-orbit>
+          <svg class="orbit-lines" data-orbit-lines aria-hidden="true"></svg>
+          <div class="orbit-ring r1"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-core"><CatMark size={46} /></div>
+          {[
+            { k: "whatsapp", label: "WhatsApp", ring: 1, a: 0 },
+            { k: "gmail", label: "Gmail", ring: 1, a: 120 },
+            { k: "calendar", label: "Calendar", ring: 1, a: 240 },
+            { k: "discord", label: "Discord", ring: 2, a: 30 },
+            { k: "meet", label: "Meet", ring: 2, a: 150 },
+            { k: "chrome", label: "Chrome", ring: 2, a: 270 },
+          ].map((o) => (
+            <button class="orb" data-orb data-ring={o.ring} data-angle={o.a} aria-label={o.label}>
+              <Icon name={o.k} size={26} /><span>{o.label}</span>
+            </button>
+          ))}
+          <span class="orb more" data-orb data-ring="2" data-angle="210"><span>and more…</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features" data-features>
+      <div class="features-pin">
+        <div class="wrap features-grid">
+          <ol class="feat-list">
+            <li data-feat="0"><h3>Tasks</h3><p>Finds tasks, then executes through your general agent</p></li>
+            <li data-feat="1"><h3>Follow-ups</h3><p>Finds follow-ups, then drafts and sends replies in your tone</p></li>
+            <li data-feat="2"><h3>Meetings</h3><p>Finds meetings, then shares a brief right before you begin</p></li>
+            <div class="feat-progress"><span data-feat-bar></span></div>
+          </ol>
+          <div class="feat-stage">
+            <div class="feat-bg" data-feat-bg="0"></div>
+            <div class="feat-bg b1" data-feat-bg="1"></div>
+            <div class="feat-bg b2" data-feat-bg="2"></div>
+            <div class="feat-window"><span></span><span></span><span></span>
+              <div class="scene s0" data-scene="0"><div class="doc-title">Creative Brief</div><div class="doc-img"></div><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+              <div class="scene s1" data-scene="1"><div class="think"><span class="spark">✳</span> Let’s have a think</div><div class="ask">How can I help you today?</div></div>
+              <div class="scene s2" data-scene="2"><div class="cal-head">Thursday</div><div class="cal-row"><b>5 PM</b><i></i></div><div class="cal-row"><b>6 PM</b><i></i></div><div class="cal-event">User interview · 6:30</div><div class="cal-row"><b>7 PM</b><i></i></div></div>
+            </div>
+
+            <article class="card" data-card="0">
+              <header><b>Send Meera the proposal on</b> <em class="app"><Icon name="whatsapp" size={14} /> Whatsapp</em></header>
+              <p class="quote">Source: “I’ll send the revised proposal by Friday, with the updated pricing and timeline.”</p>
+              <div class="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Northwind proposal.pdf</div>
+              <footer><span class="act" data-act>Send file</span><span class="sent" data-sent>Sent</span></footer>
+            </article>
+
+            <article class="card" data-card="1">
+              <header><b>Draft reply to Jay on</b> <em class="app"><Icon name="gmail" size={14} /> Email</em></header>
+              <p class="quote">Source: “Sharing the updated assets for the new community channel.”</p>
+              <div class="draft" data-draft>Hey Jay,<br /><br />Hope you are doing well. Thanks for updating me with the assets. We can discuss this further on call at 11am.<br /><br />Regards,<br />Oz<br />team minimi</div>
+              <footer><span class="act" data-act>Send Email</span><span class="sent" data-sent>Sent</span></footer>
+            </article>
+
+            <article class="card" data-card="2">
+              <header><b>User interview: minimi product feedback</b></header>
+              <p class="meta"><Icon name="meet" size={12} /> Google Meet · 30mins · 6:30pm</p>
+              <p class="label">Agenda</p>
+              <p class="agenda">Review the two nudge flow options with Jay and gather feedback on which direction feels more intuitive and effective. Discuss any changes needed to improve the user experience.</p>
+              <div class="file small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11.1l-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg> Product User Flow.pdf</div>
+              <p class="label">Participants</p>
+              <p class="people"><span class="av a1">J</span><span class="av a2">O</span><span class="av a3">Y</span> Jay Gadekar, Ojasvika Sahu &amp; You</p>
+              <footer><span class="act" data-act>Join meeting</span><span class="sent" data-sent>Joined</span></footer>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pro" id="night">
+      <div class="wrap pro-grid">
+        <div class="pro-copy reveal">
+          <h2>Context-switch like a <span class="serif">Pro</span></h2>
+          <p class="lede">minimi never misses what should be on your plate.</p>
+          <a class="btn light magnetic" href={SITE} target="_blank" rel="noopener">Join waitlist</a>
+        </div>
+        <div class="deck" data-deck>
+          <div class="deck-card" style="--c:#25D366"><Icon name="whatsapp" size={18} /><b>Send Meera the proposal</b><span>Task · due Friday</span></div>
+          <div class="deck-card" style="--c:#EA4335"><Icon name="gmail" size={18} /><b>Reply to Jay</b><span>Follow-up · draft ready</span></div>
+          <div class="deck-card" style="--c:#00897B"><Icon name="meet" size={18} /><b>User interview at 6:30pm</b><span>Meeting · brief ready</span></div>
+          <div class="deck-card" style="--c:#4285F4"><Icon name="chrome" size={18} /><b>Send Aryan the homepage copy</b><span>Task · tonight</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="love" id="love">
+      <div class="wrap">
+        <h2 class="reveal">Folks <span class="serif">love</span> minimi</h2>
+        <div class="tweets" data-tweets>
+          {["2064706248281620844", "2062466045299102104", "2064606345786179920", "2066608503288983751", "2063460868357017897", "2066547976353526245", "2065259718063575356"].map((id) => (
+            <div class="tweet">
+              <blockquote class="twitter-tweet" data-dnt="true"><a href={`https://x.com/i/status/${id}`}>View this post on X</a></blockquote>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="wrap faq-grid">
+        <h2 class="reveal">FAQs</h2>
+        <div class="faq-list">
+          {faqs.map((f, i) => (
+            <div class="qa" data-qa>
+              <button class="q" aria-expanded={i === 0 ? "true" : "false"} aria-controls={`a${i}`} id={`q${i}`}>{f.q}<span class="plus" aria-hidden="true"></span></button>
+              <div class="a" id={`a${i}`} role="region" aria-labelledby={`q${i}`}><p>{f.a}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) })}></script>
+    </section>
+
+    <section class="end" id="end">
+      <div class="wrap end-inner reveal">
+        <h2>Stay on top of <span class="serif">your work</span></h2>
+        <p class="lede">No setup needed. Just download and begin.</p>
+        <a class="btn magnetic" href={SITE} target="_blank" rel="noopener">Join waitlist</a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="wrap foot-grid">
+        <div>
+          <a class="brand" href="#top"><CatMark /> minimi</a>
+          <p>A mini-you to never miss your commitments.</p>
+        </div>
+        <nav class="foot-links" aria-label="minimi links">
+          <a href={SITE + "privacy-policy"} target="_blank" rel="noopener">Privacy policy</a>
+          <a href={SITE + "terms-of-service"} target="_blank" rel="noopener">Terms of service</a>
+          <a href={SITE + "refund-policy"} target="_blank" rel="noopener">Refund policy</a>
+          <a href={SITE + "limited-use-disclosure"} target="_blank" rel="noopener">Disclosure</a>
+          <a href={SITE + "contact-us"} target="_blank" rel="noopener">Contact us</a>
+        </nav>
+        <nav class="foot-links" aria-label="minimi socials">
+          <a href="https://x.com/minimi_ai" target="_blank" rel="noopener">X</a>
+          <a href="https://www.instagram.com/minimi.meow/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@projectminimi" target="_blank" rel="noopener">YouTube</a>
+        </nav>
+      </div>
+      <p class="wrap foot-note">minimi is a product of Shram Intelligence, Inc. This page is an independent concept redesign by Maninder Singh and is not affiliated with minimi.</p>
+    </footer>
+
+    <section class="feed" id="feed" data-feed>
+      <div class="feed-copy">
+        <p class="eyebrow">one more thing</p>
+        <h2 data-feed-title>Cotton’s hungry. <span class="serif">Not for food.</span></h2>
+        <p class="lede" data-feed-sub>Feed him the commitments you don’t want to forget. Drag them into the bowl, or tap them.</p>
+        <p class="feed-count" data-feed-count aria-live="polite">0 / 3 memories kept safe</p>
+        <div class="feed-done" data-feed-done>
+          <a class="btn magnetic" href={SITE} target="_blank" rel="noopener">Join waitlist</a>
+          <button class="btn light" data-feed-replay>Feed him again</button>
+        </div>
+      </div>
+      <div class="memories" data-memories>
+        <div class="mem-slot" style="--x:-250px;--y:-40px;--r:-6deg"><button class="memory" data-memory><Icon name="whatsapp" size={14} /> Reply to Ghehna on the nudge flows</button></div>
+        <div class="mem-slot" style="--x:230px;--y:-100px;--r:5deg"><button class="memory" data-memory><Icon name="chrome" size={14} /> Send Aryan the revised homepage copy</button></div>
+        <div class="mem-slot" style="--x:40px;--y:40px;--r:-3deg"><button class="memory" data-memory><Icon name="calendar" size={14} /> Feedback on minimi with Akio</button></div>
+      </div>
+      <div class="bowl" data-bowl aria-hidden="true">
+        <svg viewBox="0 0 140 60"><ellipse cx="70" cy="16" rx="60" ry="12" fill="#5b4436"/><ellipse cx="70" cy="16" rx="52" ry="8" fill="#3a2c23"/><path d="M10 16 Q14 54 70 56 Q126 54 130 16 Q126 26 70 28 Q14 26 10 16 Z" fill="#f2832f" stroke="#6a4f40" stroke-width="3"/><text x="70" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Inter Tight Variable, sans-serif">COTTON</text></svg>
+        <span class="crumbs" data-crumbs></span>
+      </div>
+    </section>
+  </main>
+
+  <div class="cat-layer" data-cat-layer aria-hidden="true">
+    <div class="cat-bubble" data-cat-bubble>meow</div>
+    <svg data-cat-svg viewBox="10 0 410 290" xmlns="http://www.w3.org/2000/svg"></svg>
+    <span class="cat-hit" data-cat-hit></span>
+  </div>
+
+  <script>
+    import "../scripts/main.js";
+  </script>
+</Base>

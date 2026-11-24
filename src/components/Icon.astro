@@ -1,0 +1,6 @@
+---
+import { icons } from "../data/icons.js";
+const { name, size = 14, mono = false } = Astro.props;
+const i = icons[name];
+---
+<svg viewBox="0 0 24 24" width={size} height={size} role="img" aria-label={i.title}><path d={i.path} fill={mono ? "currentColor" : i.hex} /></svg>
